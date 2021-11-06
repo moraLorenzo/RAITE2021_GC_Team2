@@ -91,16 +91,17 @@
 			if($res['code'] == 200){
 				if($this->pword_check($pw,$res['data']['0']['password_fld'])){
 					$id = $res['data']['0']['id'];
+					$username = $res['data']['0']['username_fld'];
 					$email = $res['data']['0']['emailadd_fld'];
 					$role = $res['data']['0']['role_fld'];
 
-					$tk = $this->generateToken($res['code'],$email ,$email);
+					$tk = $this->generateToken($res['code'],$email, $username);
 					// print_r($tk);
 					$sql = "UPDATE accounts_tbl SET token_fld = '$tk' WHERE id = '$id'";
 					
 					$this->gm->execute_query($sql,'token updated');
 
-					$payload = array("id"=> $id, "email"=> $email, "token"=> $tk, "role"=> $role);
+					$payload = array("id"=> $id, "username"=> $username ,"email"=> $email, "token"=> $tk, "role"=> $role);
 					$remarks = "Success";
 					$message = "Login Successful";
 					$code = 200;
@@ -118,6 +119,10 @@
 				return $this->gm->api_result("", $remarks,$message ,$code);
 			}
 
+		}
+
+		public function registration($d){
+			// $
 		}
 	}
 	?>
