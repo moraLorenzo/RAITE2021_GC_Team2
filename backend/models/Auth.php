@@ -123,7 +123,7 @@
 
 		public function register($d){
 			$un = $d->username;
-			$em = $d->password;
+			$em = $d->email;
 			$pw = $d->password;
 			$role = $d->role;
 
