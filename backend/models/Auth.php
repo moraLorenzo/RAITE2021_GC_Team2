@@ -101,7 +101,7 @@
 					$this->gm->execute_query($sql,'token updated');
 
 					$payload = array("id"=> $id, "email"=> $email, "token"=> $tk, "role"=> $role);
-					$remarks = "";
+					$remarks = "Success";
 					$message = "Login Successful";
 					$code = 200;
 					return $this->gm->api_result($payload,$remarks,$message,$code);
