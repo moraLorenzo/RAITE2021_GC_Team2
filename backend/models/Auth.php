@@ -136,7 +136,7 @@
 				return $this->gm->api_result("",$remarks, $message, $code);
 			
 			}else{
-				$sql = "INSERT INTO accounts_tbl (username_fld, emailadd_fld, token_fld, role_fld) VALUES (?, ?, ?, ?)";
+				$sql = "INSERT INTO accounts_tbl (username_fld, emailadd_fld, password_fld, role_fld) VALUES (?, ?, ?, ?)";
 				$sql= $this->pdo->prepare($sql);
 				$sql->execute([
 					$un,

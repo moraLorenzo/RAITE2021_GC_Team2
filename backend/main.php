@@ -32,7 +32,24 @@
 					// print_r($d);
 					echo json_encode($auth->register($d));
 				break;
+				
 
+					// POST METHOD
+				case 'insertsched':
+					$d = json_decode(file_get_contents("php://input")); 
+					// print_r($d);
+					echo json_encode($post->insert_sched($d));
+				break;
+				
+
+					// GET METHOD
+				
+				case 'insertsched':
+					$d = json_decode(file_get_contents("php://input")); 
+					// print_r($d);
+					echo json_encode($post->insert_sched($d));
+				break;
+					
 				# End WEB POST Operation
 				default:
 					echo "no endpoint";

@@ -17,4 +17,13 @@ class Post
 		$this->auth = new Auth($pdo);
 	}
 
+	// public function insert_sched($d){
+	// 	$uId = $d->userId;
+	// 	$empId = $d->employeeId;
+	// 	$date = $d->date;
+	// 	$status = $d->status;
+
+	// 	$sql = "SELECT * schedules_tbl WHERE scheDate_fld = $date AND  accountId_fld = $uId"
+	// }
+
 }
