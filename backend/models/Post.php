@@ -50,7 +50,8 @@ class Post
 
 	public function update_sched($d){
 		
-		$uId = $d->userId;
+		$uId = $d->uId;
+		
 		$status = $d->status;
 		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = '$uId' AND scheStatus_fld = '$status' ";
 
@@ -68,7 +69,31 @@ class Post
 				$uId,
 				$status
 			]);
+			return $this->get->get_schedById($d->uId);;
+		}
+	}
+
+	public function delete_sched($d){
+
+		$uId = $d->userId;
+		$isDeleted = 1;
+		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = '$uId' AND isDeleted_fld = '1'";
+
+		if($result = $this->pdo->query($sql)->fetchAll()){
+			$code = 400;
+			$remarks = "Failed";
+			$message = "Deleting Schedule Failed";
+			return $this->gm->api_result("",$remarks, $message, $code);
+		
+		}else{
+			
+			$sql = "UPDATE schedules_tbl SET isDeleted_fld = ? WHERE accountId_fld =  ? ";
+			$sql= $this->pdo->prepare($sql);
+			$sql->execute([
+				$uId,
+				$isDeleted
+			]);
 			return $this->get->get_schedById($d->$uId);;
 		}
-	}		
+	}
 }

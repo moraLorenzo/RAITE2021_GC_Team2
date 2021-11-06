@@ -49,6 +49,12 @@
 					echo json_encode($post->update_sched($d));
 				break;
 
+				case 'deletesched':
+					$d = json_decode(file_get_contents("php://input")); 
+						
+					echo json_encode($post->delete_sched($d));
+				break;
+
 					// GET METHOD
 				case 'getsched':
 					// print_r($d);

@@ -29,7 +29,7 @@ class Get
 		INNER JOIN accounts_tbl
 			ON accounts_tbl.id =  schedules_tbl.accountId_fld
 		INNER JOIN employees_tbl
-			ON  employees_tbl.id =  schedules_tbl.empId_fld";
+			ON  employees_tbl.id =  schedules_tbl.empId_fld WHERE schedules_tbl.isDeleted_fld = '0'";
 
 		$res = $this->gm->execute_query($sql, "No records found");
 
@@ -47,7 +47,7 @@ class Get
 
 	public function get_schedById($d)
 	{	
-		$id = $d->uId;
+		$id = $d;
 		$payload = [];
 		$remarks = 'Success';
 		$message = 'Successfully retrived schedule data';
@@ -66,7 +66,7 @@ class Get
 			ON accounts_tbl.id =  schedules_tbl.accountId_fld
 		INNER JOIN employees_tbl
 			ON  employees_tbl.id =  schedules_tbl.empId_fld 
-		WHERE schedules_tbl.accountId_fld = '$id'";
+		WHERE schedules_tbl.accountId_fld = '$id' AND schedules_tbl.isDeleted_fld = '0'";
 		$res = $this->gm->execute_query($sql, "No records found");
 		
 		if($res['code'] == 200){
