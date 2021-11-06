@@ -43,7 +43,7 @@ class Post
 		$code = 200;
 		$remarks = "Success";
 		$message = "Scheduling Successful";
-		return $this->gm->api_result("",$remarks, $message, $code);
+		return $this->get->get_schedById($uId);
 		}		
 
 	}
