@@ -48,7 +48,7 @@ class Get
 
 	public function get_schedById($d)
 	{	
-		$id = $d->uId;
+		$id = $d->userId;
 		$payload = [];
 		$remarks = 'Success';
 		$message = 'Successfully retrived schedule data';
