@@ -17,15 +17,17 @@ class Get
 		$message = 'Successfully retrived schedule data';
 
 		$sql = "SELECT
-		accounts.username_fld,
-		employees.fname_fld,
-		employees.mname_fld,
-		employees.lname_fld,
-		FROM accounts_tbl
-		FULL OUTER JOIN schedules_tbl
-			ON schedules_tbl.accountId_fld = accounts_tbl.id
-		FULL OUTER JOIN employees_tbl
-			ON schedules_tbl.empId_fld =  employees_tbl.id";
+		accounts_tbl.username_fld,
+		employees_tbl.fname_fld,
+		employees_tbl.mname_fld,
+		employees_tbl.lname_fld,
+		schedules_tbl.accountId_fld,
+		schedules_tbl.empId_fld
+		FROM schedules_tbl
+		INNER JOIN accounts_tbl
+			ON accounts_tbl.id =  schedules_tbl.accountId_fld
+		INNER JOIN employees_tbl
+			ON  employees_tbl.id =  schedules_tbl.empId_fld";
 
 		$res = $this->gm->execute_query($sql, "No records found");
 
@@ -48,7 +50,17 @@ class Get
 		$remarks = 'Success';
 		$message = 'Successfully retrived schedule data';
 
-		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = '$id'";
+		$sql = "SELECT
+		accounts_tbl.username_fld,
+		employees_tbl.fname_fld,
+		employees_tbl.mname_fld,
+		employees_tbl.lname_fld
+		FROM schedules_tbl
+		INNER JOIN accounts_tbl
+			ON accounts_tbl.id =  schedules_tbl.accountId_fld
+		INNER JOIN employees_tbl
+			ON  employees_tbl.id =  schedules_tbl.empId_fld 
+		WHERE schedules_tbl.accountId_fld = '$id'";
 		$res = $this->gm->execute_query($sql, "No records found");
 		
 		if($res['code'] == 200){

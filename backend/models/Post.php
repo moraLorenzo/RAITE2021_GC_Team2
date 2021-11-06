@@ -52,7 +52,7 @@ class Post
 		
 		$uId = $d->userId;
 		$status = $d->status;
-		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = '$uId' and scheStatus_fld = '$status' ";
+		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = '$uId' AND scheStatus_fld = '$status' ";
 
 		if($result = $this->pdo->query($sql)->fetchAll()){
 			$code = 400;
