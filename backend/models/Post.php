@@ -75,7 +75,7 @@ class Post
 
 	public function delete_sched($d){
 
-		$uId = $d->userId;
+		$uId = $d->uId;
 		$isDeleted = 1;
 		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = '$uId' AND isDeleted_fld = '1'";
 
@@ -90,10 +90,13 @@ class Post
 			$sql = "UPDATE schedules_tbl SET isDeleted_fld = ? WHERE accountId_fld =  ? ";
 			$sql= $this->pdo->prepare($sql);
 			$sql->execute([
-				$uId,
-				$isDeleted
+				$isDeleted,
+				$uId
 			]);
-			return $this->get->get_schedById($d->$uId);;
+			$code = 200;
+			$remarks = "Success";
+			$message = "Deleting Scheduling Success";
+			return $this->gm->api_result("",$remarks, $message, $code);
 		}
 	}
 }
