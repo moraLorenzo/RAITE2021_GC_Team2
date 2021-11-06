@@ -16,7 +16,17 @@ class Get
 		$remarks = 'Success';
 		$message = 'Successfully retrived schedule data';
 
-		$sql = "SELECT * FROM schedules_tbl";
+		$sql = "SELECT
+		accounts.username_fld,
+		employees.fname_fld,
+		employees.mname_fld,
+		employees.lname_fld,
+		FROM accounts_tbl
+		FULL OUTER JOIN schedules_tbl
+			ON schedules_tbl.accountId_fld = accounts_tbl.id
+		FULL OUTER JOIN employees_tbl
+			ON schedules_tbl.empId_fld =  employees_tbl.id";
+
 		$res = $this->gm->execute_query($sql, "No records found");
 
 		if($res['code'] == 200){
@@ -31,13 +41,14 @@ class Get
 		return $this->gm->api_result($payload,$remarks,$message,$res['code']);
 	}
 
-	public function get_schedById($userId)
-	{
+	public function get_schedById($d)
+	{	
+		$id = $d->uId;
 		$payload = [];
 		$remarks = 'Success';
 		$message = 'Successfully retrived schedule data';
 
-		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = $userId";
+		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = '$id'";
 		$res = $this->gm->execute_query($sql, "No records found");
 		
 		if($res['code'] == 200){

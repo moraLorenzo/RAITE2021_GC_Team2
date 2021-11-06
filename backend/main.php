@@ -17,10 +17,11 @@
 	}
 	switch($_SERVER['REQUEST_METHOD']) {
 		case 'POST':
-			// (base64_decode)
+				
+			
 			switch($req[0]) {
-				// jd(check_message())
-				//AUTH METHOD
+				
+					//AUTH METHOD
 				case 'login':
 					$d = json_decode(file_get_contents("php://input")); 
 					// print_r($d);
@@ -41,6 +42,12 @@
 					echo json_encode($post->insert_sched($d));
 				break;
 				
+					//UPDATE METHOD 
+				case 'updatesched':
+					$d = json_decode(file_get_contents("php://input")); 
+						
+					echo json_encode($post->update_sched($d));
+				break;
 
 					// GET METHOD
 				case 'getsched':
