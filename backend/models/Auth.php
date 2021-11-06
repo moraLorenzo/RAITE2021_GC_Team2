@@ -101,21 +101,21 @@
 					$this->gm->execute_query($sql,'token updated');
 
 					$payload = array("id"=> $id, "email"=> $email, "token"=> $tk, "role"=> $role);
-					$remarks = "Success";
+					$remarks = "";
 					$message = "Login Successful";
 					$code = 200;
-					return $this->api_result($payload,$remarks,$message,$code);
+					return $this->gm->api_result($payload,$remarks,$message,$code);
 				}else{
 					$remarks = "Failed";
 					$message = "Wrong Password";
 					$code = 404;
-					return $this->api_result("", $remarks,$message ,$code);
+					return $this->gm->api_result("", $remarks,$message ,$code);
 				}
 			}else{
 				$remarks = "Failed";
 				$message = "Login failed";
 				$code = 500;
-				return $this->api_result("", $remarks,$message ,$code);
+				return $this->gm->api_result("", $remarks,$message ,$code);
 			}
 
 		}
