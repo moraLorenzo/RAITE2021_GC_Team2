@@ -1,4 +1,5 @@
-# RAITE2021_GC_Team2
+# RAITE2021_GC_Team2 
+
 
 RAITE2021 Final Round
 
@@ -11,14 +12,13 @@ Target Audience: Barbershop within Olongapo City and Male customers within olong
 
 Scope and Limitations: The system's scope is within olongapo city and is limited for male barbershop customers.
 
-# RAITE2021_GC_Team2 
 
 # Prerequisite Software
 # Nodejs, Angular Framework and Xampp Application
 
 First Install Nodejs Application and Xampp Application,
 Then install angular using command "npm install -g @angular/cli" in command prompt
-For more details redirect here: https://angular.io/cli
+For more details for the stepts, please redirect here: https://angular.io/cli
 
 # How to run the system
 Clone or Download the Repository, then extract it.
