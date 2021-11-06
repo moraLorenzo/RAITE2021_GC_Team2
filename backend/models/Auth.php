@@ -125,7 +125,7 @@
 			$un = $d->username;
 			$em = $d->email;
 			$pw = $d->password;
-			$role = $d->role;
+			$role = 1;
 
 			$sql = "SELECT * FROM accounts_tbl WHERE emailadd_fld = '$em' LIMIT 1";
 		
