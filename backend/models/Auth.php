@@ -121,8 +121,34 @@
 
 		}
 
-		public function registration($d){
-			// $
+		public function register($d){
+			$un = $d->username;
+			$em = $d->password;
+			$pw = $d->password;
+			$role = $d->role;
+
+			$sql = "SELECT * FROM accounts_tbl WHERE emailadd_fld = '$em' LIMIT 1";
+		
+			if($result = $this->pdo->query($sql)->fetchAll()){
+
+				$remarks = "Failed";
+				$message = "Registration Failed";
+				return $this->gm->api_result("",$remarks, $message,$res['code']);
+			
+			}else{
+				$sql = "INSERT INTO accounts_tbl (username_fld, emailadd_fld, token_fld, role_fld) VALUES (?, ?, ?, ?)";
+				$sql= $this->pdo->prepare($sql);
+				$sql->execute([
+					$un,
+					$em,
+					$this->encrypt_password($pw),
+					$role
+				]);
+
+			$remarks = "Success";
+			$message = "Registration Successful";
+			return $this->gm->api_result("",$remarks, $message,$res['code']);
+			}		
 		}
 	}
 	?>

@@ -27,6 +27,12 @@
 					echo json_encode($auth->login($d));
 				break;
 
+				case 'register':
+					$d = json_decode(file_get_contents("php://input")); 
+					// print_r($d);
+					echo json_encode($auth->register($d));
+				break;
+
 				# End WEB POST Operation
 				default:
 					echo "no endpoint";
