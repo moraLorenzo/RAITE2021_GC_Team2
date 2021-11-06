@@ -31,13 +31,13 @@ class Get
 		return $this->gm->api_result($payload,$remarks,$message,$res['code']);
 	}
 
-	public function get_schedById($d)
+	public function get_schedById($userId)
 	{
 		$payload = [];
 		$remarks = 'Success';
 		$message = 'Successfully retrived schedule data';
 
-		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = $d->userId";
+		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = $userId";
 		$res = $this->gm->execute_query($sql, "No records found");
 		
 		if($res['code'] == 200){
