@@ -20,7 +20,7 @@ class Post
 	public function insert_sched($d){
 		$uId = $d->userId;
 		$empId = $d->employeeId;
-		$date = date("Y-m-d");
+		$date = $d->date;
 		$status = $d->status;
 
 		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = '$uId' AND (scheStatus_fld = '$status' OR scheDate_fld = '$date')";

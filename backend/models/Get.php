@@ -9,4 +9,9 @@ class Get
 		$this->gm = new GlobalMethods($pdo);
 	}
 
+
+	public function get_sched($d)
+	{
+
+	}
 }

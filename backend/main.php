@@ -43,10 +43,10 @@
 				
 
 					// GET METHOD
-				case 'insertsched':
+				case 'getsched':
 					$d = json_decode(file_get_contents("php://input")); 
 					// print_r($d);
-					echo json_encode($post->insert_sched($d));
+					echo json_encode($get->get_sched($d));
 				break;
 					
 				# End WEB POST Operation
