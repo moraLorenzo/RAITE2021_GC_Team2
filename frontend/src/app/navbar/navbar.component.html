@@ -1,0 +1,61 @@
+<!-- Image and text
+<nav class="navbar navbar-light bg-light"></nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img
+      src="https://png.pngtree.com/png-clipart/20190918/ourlarge/pngtree-scissors-2764712-png-image_1733940.jpg"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt=""
+    />
+    <span>BMS</span>
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="#"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li> -->
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" />
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+        Search
+      </button> -->
+      <span>{{ username | titlecase }}</span>
+    </form>
+  </div>
+</nav>
+
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-light mt-5 w-50 mx-auto">
+  <div class="container">
+    <div class="row mx-auto">
+      <div class="col-sm">
+        <a class="btn btn-block" [routerLink]="['/page1']" role="button"
+          >Appoint</a
+        >
+      </div>
+      <div class="col-sm">
+        <a class="btn btn-block" [routerLink]="['/page2']" role="button"
+          >Schedules</a
+        >
+      </div>
+      <div class="col-sm">
+        <a class="btn btn-block" [routerLink]="['/page3']" role="button"
+          >Account</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>

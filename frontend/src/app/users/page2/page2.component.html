@@ -1,0 +1,26 @@
+<img src="../../assets/2.svg" alt="" />
+<div class="card vertical-center" style="width: 58rem">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Barber</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schedule of schedules; let i = index">
+          <th scope="row">{{ i }}</th>
+          <td>{{ schedule.scheDate_fld }}</td>
+          <td>
+            {{ schedule.fname_fld | titlecase }}
+            {{ schedule.mname_fld | titlecase }}
+            {{ schedule.lname_fld | titlecase }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr />
+</div>

@@ -1,0 +1,127 @@
+<!-- Image and text
+<nav class="navbar navbar-light bg-light"></nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img
+      src="https://png.pngtree.com/png-clipart/20190918/ourlarge/pngtree-scissors-2764712-png-image_1733940.jpg"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt=""
+    />
+    <span>BMS</span>
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+    <button type="button" class="btn btn-outline-danger" (click)="logout()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-box-arrow-right"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+        ></path>
+        <path
+          fill-rule="evenodd"
+          d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+        ></path>
+      </svg>
+      Logout
+    </button>
+  </div>
+</nav>
+
+<img src="../../assets/4.svg" alt="" />
+<div class="card vertical-center" style="width: 58rem">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Haircut Date</th>
+          <th scope="col">Barber</th>
+          <th scope="col">Client</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let schedule of schedules; let i = index">
+          <th scope="row">{{ schedule.id }}</th>
+          <td>{{ schedule.scheDate_fld }}</td>
+          <td>
+            {{ schedule.fname_fld | titlecase }}
+            {{ schedule.mname_fld | titlecase }}
+            {{ schedule.lname_fld | titlecase }}
+          </td>
+          <td>
+            {{ schedule.username_fld | titlecase }}
+          </td>
+          <td>
+            {{ schedule.scheStatus_fld | titlecase }}
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              *ngIf="schedule.scheStatus_fld == 'pending'"
+              (click)="update('approved', schedule.id)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-box-arrow-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+                ></path>
+              </svg>
+              Approve
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              *ngIf="schedule.scheStatus_fld == 'approved'"
+              (click)="update('served', schedule.id)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-box-arrow-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+                ></path>
+              </svg>
+              Serve
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr />
+</div>

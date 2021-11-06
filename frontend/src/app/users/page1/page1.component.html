@@ -1,0 +1,35 @@
+<img src="../../assets/5.svg" alt="" />
+
+<div class="card vertical-center" style="width: 58rem">
+  <div class="card-body">
+    <form
+      class="container w-50"
+      style="margin-top: 10%"
+      ngNativeValidate
+      (submit)="req($event)"
+    >
+      <div class="col">
+        <div class="input-group mb-3 mx-auto" style="width: 92%">
+          <select class="custom-select" id="inputGroupSelect03">
+            <option disabled>Choose...</option>
+            <option value="1">Jose</option>
+            <option value="2">Rolando</option>
+            <option value="3">Joaquin</option>
+            <option value="4">Jasper</option>
+            <option value="5">Jessie</option>
+          </select>
+        </div>
+        <div class="col">
+          <input
+            type="date"
+            class="form-control"
+            placeholder="Date of Haircut"
+          />
+        </div>
+      </div>
+      <br />
+      <button type="submit" class="btn btn-block">Request</button>
+    </form>
+  </div>
+  <hr />
+</div>
