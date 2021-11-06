@@ -130,10 +130,10 @@
 			$sql = "SELECT * FROM accounts_tbl WHERE emailadd_fld = '$em' LIMIT 1";
 		
 			if($result = $this->pdo->query($sql)->fetchAll()){
-
+				$code = 400;
 				$remarks = "Failed";
 				$message = "Registration Failed";
-				return $this->gm->api_result("",$remarks, $message,$res['code']);
+				return $this->gm->api_result("",$remarks, $message, $code);
 			
 			}else{
 				$sql = "INSERT INTO accounts_tbl (username_fld, emailadd_fld, token_fld, role_fld) VALUES (?, ?, ?, ?)";
@@ -144,10 +144,10 @@
 					$this->encrypt_password($pw),
 					$role
 				]);
-
+			$code = 200;
 			$remarks = "Success";
 			$message = "Registration Successful";
-			return $this->gm->api_result("",$remarks, $message,$res['code']);
+			return $this->gm->api_result("",$remarks, $message, $code);
 			}		
 		}
 	}
