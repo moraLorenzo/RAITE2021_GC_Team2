@@ -66,8 +66,8 @@ class Post
 			$sql = "UPDATE schedules_tbl SET scheStatus_fld = ? WHERE id =  ? ";
 			$sql= $this->pdo->prepare($sql);
 			$sql->execute([
-				$id,
-				$status
+				$status,
+				$id
 			]);
 			return $this->get->get_sched();;
 		}
