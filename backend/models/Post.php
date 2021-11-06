@@ -50,10 +50,10 @@ class Post
 
 	public function update_sched($d){
 		
-		$uId = $d->uId;
+		$id = $d->id;
 		
 		$status = $d->status;
-		$sql = "SELECT * FROM schedules_tbl WHERE accountId_fld = '$uId' AND scheStatus_fld = '$status' ";
+		$sql = "SELECT * FROM schedules_tbl WHERE id = '$id' AND scheStatus_fld = '$status' ";
 
 		if($result = $this->pdo->query($sql)->fetchAll()){
 			$code = 400;
@@ -63,13 +63,13 @@ class Post
 		
 		}else{
 			
-			$sql = "UPDATE schedules_tbl SET scheStatus_fld = ? WHERE accountId_fld =  ? ";
+			$sql = "UPDATE schedules_tbl SET scheStatus_fld = ? WHERE id =  ? ";
 			$sql= $this->pdo->prepare($sql);
 			$sql->execute([
-				$uId,
+				$id,
 				$status
 			]);
-			return $this->get->get_schedById($d->uId);;
+			return $this->get->get_sched();;
 		}
 	}
 
