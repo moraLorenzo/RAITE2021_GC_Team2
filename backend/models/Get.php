@@ -22,7 +22,9 @@ class Get
 		employees_tbl.mname_fld,
 		employees_tbl.lname_fld,
 		schedules_tbl.accountId_fld,
-		schedules_tbl.empId_fld
+		schedules_tbl.empId_fld,
+		schedules_tbl.scheDate_fld,
+		schedules_tbl.scheStatus_fld
 		FROM schedules_tbl
 		INNER JOIN accounts_tbl
 			ON accounts_tbl.id =  schedules_tbl.accountId_fld
@@ -54,7 +56,11 @@ class Get
 		accounts_tbl.username_fld,
 		employees_tbl.fname_fld,
 		employees_tbl.mname_fld,
-		employees_tbl.lname_fld
+		employees_tbl.lname_fld,
+		schedules_tbl.accountId_fld,
+		schedules_tbl.empId_fld,
+		schedules_tbl.scheDate_fld,
+		schedules_tbl.scheStatus_fld
 		FROM schedules_tbl
 		INNER JOIN accounts_tbl
 			ON accounts_tbl.id =  schedules_tbl.accountId_fld
