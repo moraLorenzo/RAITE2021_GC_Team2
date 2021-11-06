@@ -83,16 +83,40 @@
 
 		public function login($d){
 			$un = $d->username;
-			// $pw = $d->password;
-			print_r($un);
-			// $sql = "SELECT * FROM accounts_tbl WHERE username_fld = $un";
-			// $res = $this->gm->execute_query($sql, 'Username or Password Incorrect');
-			// if($res['200']){
-			// 	$email = $res['0']['emailadd_fld'];
-			// 	$password = $res['0']['emailadd_fld'];
+			$pw = $d->password;
+			// print_r($un);
+			$sql = "SELECT * FROM accounts_tbl WHERE username_fld = '$un'LIMIT 1";
+			$res = $this->gm->execute_query($sql, 'Username or Password Incorrect');
 
-			// 	if($this->pword_check())
-			// }
+			if($res['code'] == 200){
+				if($this->pword_check($pw,$res['data']['0']['password_fld'])){
+					$id = $res['data']['0']['id'];
+					$email = $res['data']['0']['emailadd_fld'];
+					$role = $res['data']['0']['role_fld'];
+
+					$tk = $this->generateToken($res['code'],$email ,$email);
+					// print_r($tk);
+					$sql = "UPDATE accounts_tbl SET token_fld = '$tk' WHERE id = '$id'";
+					
+					$this->gm->execute_query($sql,'token updated');
+
+					$payload = array("id"=> $id, "email"=> $email, "token"=> $tk, "role"=> $role);
+					$remarks = "Success";
+					$message = "Login Successful";
+					$code = 200;
+					return $this->api_result($payload,$remarks,$message,$code);
+				}else{
+					$remarks = "Failed";
+					$message = "Wrong Password";
+					$code = 404;
+					return $this->api_result("", $remarks,$message ,$code);
+				}
+			}else{
+				$remarks = "Failed";
+				$message = "Login failed";
+				$code = 500;
+				return $this->api_result("", $remarks,$message ,$code);
+			}
 
 		}
 	}
